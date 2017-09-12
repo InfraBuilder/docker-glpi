@@ -20,7 +20,8 @@ RUN export DEBIAN_FRONTEND=noninteractive \
 COPY glpi/ /var/www/html/
 
 RUN chown -R www-data:www-data /var/www/html \
-	&& sed -i '/DocumentRoot /a <Directory /var/www/html>\n\t\tAllowOverride all\n\t</Directory>' /etc/apache2/sites-enabled/000-default.conf
+	&& sed -i '/DocumentRoot /a <Directory /var/www/html>\n\t\tAllowOverride all\n\t</Directory>' /etc/apache2/sites-enabled/000-default.conf \
+	&& rm /var/www/html/index.html
 
 VOLUME /var/www/html/config
 VOLUME /var/www/html/files
